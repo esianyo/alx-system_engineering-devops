@@ -1,0 +1,44 @@
+total 44
+drwxr-xr-x 2 root root 233 Feb 13 14:33 .
+drwxr-xr-x 6 root root 104 Feb 13 09:08 ..
+-rwxr--r-- 1 root root  32 Feb 13 10:55 0-hello_world
+-rwxr--r-- 1 root root  28 Feb 13 11:13 1-confused_smiley
+-rwxr--r-- 1 root root  28 Feb 13 11:21 2-hellofile
+-rwxr--r-- 1 root root  39 Feb 13 11:34 3-twofiles
+-rwxr--r-- 1 root root  29 Feb 13 11:51 4-lastlines
+-rwxr--r-- 1 root root  29 Feb 13 12:18 5-firstlines
+-rwxr--r-- 1 root root  36 Feb 13 13:08 6-third_line
+-rwxr--r-- 1 root root 121 Feb 13 14:13 7-file
+-rwxr--r-- 1 root root  36 Feb 13 14:33 8-cwd_state
+-rw-r--r-- 1 root root  96 Feb 13 12:26 iacta
+-rw-r--r-- 1 root root   0 Feb 13 14:33 ls_cwd_content
+-rw-r--r-- 1 root root  41 Feb 13 09:11 README.md
+total 108
+drwxr-xr-x 2 root root 4096 Feb 13 17:53 .
+drwxr-xr-x 6 root root  104 Feb 13 09:08 ..
+-rwxr--r-- 1 root root   32 Feb 13 10:55 0-hello_world
+-rwxr--r-- 1 root root   48 Feb 13 15:08 10-no_more_js
+-rwxr--r-- 1 root root   37 Feb 13 15:32 11-directories
+-rwxr--r-- 1 root root   25 Feb 13 15:41 12-newest_files
+-rwxr--r-- 1 root root   27 Feb 13 16:31 13-unique
+-rwxr--r-- 1 root root   39 Feb 13 16:44 14-findthatword
+-rwxr--r-- 1 root root   39 Feb 13 16:48 15-countthatword
+-rwxr--r-- 1 root root   42 Feb 13 16:56 16-whatsnext
+-rwxr--r-- 1 root root   38 Feb 13 17:08 17-hidethisword
+-rwxr--r-- 1 root root   50 Feb 13 17:16 18-letteronly
+-rwxr--r-- 1 root root   21 Feb 13 17:19 19-AZ
+-rwxr--r-- 1 root root   28 Feb 13 11:13 1-confused_smiley
+-rwxr--r-- 1 root root   21 Feb 13 17:33 20-hiago
+-rwxr--r-- 1 root root   37 Feb 13 17:53 21-reverse
+-rwxr--r-- 1 root root   28 Feb 13 11:21 2-hellofile
+-rwxr--r-- 1 root root   39 Feb 13 11:34 3-twofiles
+-rwxr--r-- 1 root root   29 Feb 13 11:51 4-lastlines
+-rwxr--r-- 1 root root   29 Feb 13 12:18 5-firstlines
+-rwxr--r-- 1 root root   36 Feb 13 13:08 6-third_line
+-rwxr--r-- 1 root root  100 Feb 13 17:48 7-file
+-rwxr--r-- 1 root root   36 Feb 13 14:33 8-cwd_state
+-rwxr--r-- 1 root root   37 Feb 13 14:45 9-duplicate_last_line
+-rw-r--r-- 1 root root   12 Feb 13 17:49 \*\\'"Best School"\'\\*$\?\*\*\*\*\*:)
+-rw-r--r-- 1 root root  192 Feb 13 14:45 iacta
+-rw-r--r-- 1 root root  717 Feb 13 14:33 ls_cwd_content
+-rw-r--r-- 1 root root   41 Feb 13 09:11 README.md
