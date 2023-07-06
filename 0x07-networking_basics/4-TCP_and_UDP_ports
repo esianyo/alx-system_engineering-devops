@@ -1,0 +1,8 @@
+#!/bin/env bash
+# Display listening ports with PID and program name using ss command
+netstat -ln | grep LISTEN | while read -r line;
+do
+	pid=$(echo "$line" | awk '{print $7}')
+	name=$(ps -p "$pid" | awk '{print $11}')
+	echo "Port: ${line:9} PID: ${pid} Name: ${name}"
+done
