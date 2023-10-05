@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Configures an Ubuntu server with the below requirements
+# Configures an Ubuntu server
 sudo sh -c 'echo "127.0.0.2 localhost" >> /etc/hosts'
 sudo sh -c 'echo "8.8.8.8 facebook.com" >> /etc/hosts'
 sudo systemctl restart docker
