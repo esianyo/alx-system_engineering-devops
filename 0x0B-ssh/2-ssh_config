@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Use the private key ~/.ssh/school for authentication
+IdentityFile ~/.ssh/school
+
+# Refuse to authenticate using a password
+PasswordAuthentication no
