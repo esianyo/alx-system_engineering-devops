@@ -1,5 +1,3 @@
-Sure, here is the README.md for your SSH project:
-
 ## SSH Project
 
 **Author:** Esianyo Dzisenu
