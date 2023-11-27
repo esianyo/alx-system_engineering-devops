@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Install nginx and set up web server
+
+# Update your local package index
+sudo apt-get update -y
+
+# Install nginx
+sudo apt-get install -y nginx
+
+# Make sure nginx is running
+sudo service nginx start
+
+# Set up the HTML file
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+
+# Configure nginx to auto start at boot
+sudo update-rc.d nginx defaults
+
+# Open port 80 in the firewall
+sudo ufw allow 'Nginx HTTP'
+
+# Restart nginx
+sudo service nginx restart
