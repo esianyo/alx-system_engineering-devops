@@ -1,0 +1,37 @@
+# 0x13. Firewall
+
+This project is part of the DevOps and SysAdmin track, focusing on Security. The main concept for this project is Web Stack Debugging.
+
+## Concepts
+
+For this project, we expect you to look at this concept:
+
+- Web stack debugging
+
+## Resources
+
+Read or watch:
+
+- [What is a firewall](https://en.wikipedia.org/wiki/Firewall_(computing))
+
+## Tasks
+
+### 0. Block all incoming traffic but
+
+Let’s install the ufw firewall and setup a few rules on web-01.
+
+#### Requirements:
+
+The requirements below must be applied to web-01 (feel free to do it on lb-01 and web-02, but it won’t be checked)
+Configure ufw so that it blocks all incoming traffic, except the following TCP ports:
+- 22 (SSH)
+- 443 (HTTPS SSL)
+- 80 (HTTP)
+
+Share the ufw commands that you used in your answer file
+
+Repo:
+
+GitHub repository: alx-system_engineering-devops
+Directory: 0x13-firewall
+File: 0-block_all_incoming_traffic_but
