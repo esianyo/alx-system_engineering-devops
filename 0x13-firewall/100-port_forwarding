@@ -1,0 +1,34 @@
+# This is the modified ufw configuration file for web-01
+
+# Default rules
+*filter
+
+# Allow incoming traffic on established connections
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# Allow incoming traffic on SSH (port 22)
+-A INPUT -p tcp --dport 22 -j ACCEPT
+
+# Allow incoming traffic on the web server port (port 80)
+-A INPUT -p tcp --dport 80 -j ACCEPT
+
+# Allow outgoing traffic on any port
+-A OUTPUT -j ACCEPT
+
+# NAT rules
+*nat
+
+# Redirect incoming traffic on port 8080 to port 80
+-A PREROUTING -i eth0 -p tcp --dport 8080 -j REDIRECT --to-port 80
+
+# Allow outgoing traffic on the redirected port (port 80)
+-A POSTROUTING -o eth0 -p tcp --dport 80 -j MASQUERADE
+
+# Commit the changes
+COMMIT
+
+# Reload the firewall rules
+ufw reload
+
+# Enable the firewall if it is not already enabled
+ufw enable
