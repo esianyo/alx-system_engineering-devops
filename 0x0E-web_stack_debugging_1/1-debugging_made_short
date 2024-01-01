@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 # debugging nginx connection
 
-ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+#!/usr/bin/env bash
+# This script fixes Nginx to listen on port 80
+
+apt-get update
+apt-get install -y nginx
 service nginx start
-kill "$(pgrep 'nginx' | head -1)"
+sed -i 's/80 default_server;/80;/g' /etc/nginx/sites-available/default
+service nginx restart
