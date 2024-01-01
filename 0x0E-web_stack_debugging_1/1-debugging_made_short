@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 # debugging nginx connection
-
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx start
-sleep 2  # Adding a short delay to ensure Nginx has started
-service nginx status  # Check the status (optional, for verification)
+kill "$(pgrep 'nginx' | head -1)"
