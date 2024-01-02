@@ -7,27 +7,43 @@ import requests
 import sys
 
 
+def tasks_done():
+    '''Script that exports all employees TODO tasks to a json file'''
+
+    id = 1
+    all_todos = {}
+
+    while True:
+        url = "https://jsonplaceholder.typicode.com/users/{}".format(id)
+        response = requests.get(url)
+
+        # Check if the response is successful
+        if response.status_code != 200:
+            break
+
+        response_json = response.json()
+        employee_name = response_json.get("name")
+
+        url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
+        todos = requests.get(url)
+        todos_json = todos.json()
+        task_list = []
+
+        for task in todos_json:
+            task_dict = {}
+            task_dict["task"] = task.get("title")
+            task_dict["completed"] = task.get("completed")
+            task_dict["username"] = employee_name
+            task_list.append(task_dict)
+
+        all_todos[id] = task_list
+        id += 1
+
+    file_name = "todo_all_employees.json"
+    with open(file_name, "a") as fd:
+        json.dump(all_todos, fd)
+        fd.write("\n")  # Add a line break for better readability
+
+
 if __name__ == "__main__":
-    base_url = "https://jsonplaceholder.typicode.com"
-    users_url = f"{base_url}/users"
-
-    try:
-        users_response = requests.get(users_url)
-        users_data = users_response.json()
-
-        all_data = {}
-        for user in users_data:
-            todos_url = f"{base_url}/todos?userId={user['id']}"
-            todos_response = requests.get(todos_url)
-            todos_data = todos_response.json()
-
-            all_data[user['id']] = [{"username": user['username'], "task": task['title'], "completed": task['completed']} for task in todos_data]
-
-        json_file = "todo_all_employees.json"
-        with open(json_file, 'w') as file:
-            json.dump(all_data, file)
-
-        print(f"Data exported to {json_file}")
-
-    except requests.exceptions.RequestException as e:
-        print(f"Error: {e}")
+    tasks_done()
