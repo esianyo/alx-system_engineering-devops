@@ -3,21 +3,35 @@ import requests
 import sys
 
 
-def get_employee_todo_list_progress(employee_id):
-    response = requests.get(f'https://jsonplaceholder.typicode.com/users/{employee_id}')
-    employee = response.json()
-    todos = requests.get(f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}').json()
+def tasks_done(id):
+    '''Script that displays an employee completed TODO tasks in stout
+        Parameters:
+        employee_id: Is an interger representing an employee id.
+    '''
 
-    done_tasks = [task for task in todos if task['completed'] is True]
-    total_tasks = len(todos)
+    url = "https://jsonplaceholder.typicode.com/users/{}".format(id)
+    response = requests.get(url)
+    response_json = response.json()
+    employee_name = response_json.get("name")
 
-    print(f"Employee {employee['name']} is done with tasks({len(done_tasks)}/{total_tasks}):")
-    for task in done_tasks:
-        print("\t " + task['title'])
+    url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
+    todos = requests.get(url)
+    todos_json = todos.json()
+    number_tasks = len(todos_json)
+
+    task_compleated = 0
+    task_list = ""
+
+    for task in todos_json:
+        if task.get("completed") is True:
+            task_compleated += 1
+            task_list += "\t " + task.get("title") + "\n"
+
+    print("Employee {} is done with tasks({}/{}):".format(employee_name,
+                                                          task_compleated,
+                                                          number_tasks))
+    print(task_list[:-1])
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print('Usage: python3 script.py <employee_id>')
-    else:
-        get_employee_todo_list_progress(sys.argv[1])
+    tasks_done(sys.argv[1])
