@@ -1,54 +1,23 @@
 #!/usr/bin/python3
 import requests
-from sys import argv
+import sys
 
 
-def fetch_employee_data(employee_id):
-    # Fetch user data
-    user_response = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(employee_id))
-    # Fetch TODOs for the given employee
-    todos_response = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'.format(employee_id))
+def get_employee_todo_list_progress(employee_id):
+    response = requests.get(f'https://jsonplaceholder.typicode.com/users/{employee_id}')
+    employee = response.json()
+    todos = requests.get(f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}').json()
 
-    # Check if user and TODOs are found
-    if user_response.status_code != 200:
-        print("User not found")
-        exit(1)
+    done_tasks = [task for task in todos if task['completed'] is True]
+    total_tasks = len(todos)
 
-    if todos_response.status_code != 200:
-        print("Todos not found")
-        exit(1)
-
-    # Extract user and TODOs data
-    user = user_response.json()
-    todos = todos_response.json()
-
-    # Filter completed tasks
-    completed_tasks = [task for task in todos if task['completed']]
-
-    return user, completed_tasks, todos
-
-
-def display_employee_progress(user, completed_tasks, total_tasks):
-    # Display employee progress information
-    print("Employee {} is done with tasks({}/{}):".format(
-        user['name'], len(completed_tasks), total_tasks))
-
-    # Display titles of completed tasks
-    for task in completed_tasks:
-        print("\t {}".format(task['title']))
+    print(f"Employee {employee['name']} is done with tasks({len(done_tasks)}/{total_tasks}):")
+    for task in done_tasks:
+        print("\t " + task['title'])
 
 
 if __name__ == "__main__":
-    # Check for the correct number of arguments
-    if len(argv) != 2 or not argv[1].isdigit():
-        print("Usage: {} <employee_id>".format(argv[0]))
-        exit(1)
-
-    # Get employee ID from command line argument
-    employee_id = int(argv[1])
-
-    # Fetch employee data
-    user, completed_tasks, todos = fetch_employee_data(employee_id)
-
-    # Display employee progress
-    display_employee_progress(user, completed_tasks, len(todos))
+    if len(sys.argv) < 2:
+        print('Usage: python3 script.py <employee_id>')
+    else:
+        get_employee_todo_list_progress(sys.argv[1])
