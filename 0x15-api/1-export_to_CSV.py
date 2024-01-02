@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+
+'''
+Script that exports an employee TODO tasks
+'''
 import requests
 import sys
 
