@@ -2,26 +2,27 @@ import requests
 from sys import argv
 
 
-def fetch_employee_data(emp_id):
+def fetch_employee_data(employee_id):
     # Fetch user data
-    response = requests.get('https://jsonplaceholder.typicode.com/users/{}'
-                                 .format(emp_id))
+    user_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(employee_id)
+    user_response = requests.get(user_url)
+
     # Fetch TODOs for the given employee
-    todos = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'
-                                  .format(emp_id))
+    todos_url = 'https://jsonplaceholder.typicode.com/todos?userId={}'.format(employee_id)
+    todos_response = requests.get(todos_url)
 
     # Check if user and TODOs are found
-    if response.status_code != 200:
+    if user_response.status_code != 200:
         print("User not found")
         exit(1)
 
-    if response.status_code != 200:
+    if todos_response.status_code != 200:
         print("Todos not found")
         exit(1)
 
     # Extract user and TODOs data
-    user = response.json()
-    todos = todos.json()
+    user = user_response.json()
+    todos = todos_response.json()
 
     # Filter completed tasks
     completed_tasks = [task for task in todos if task['completed']]
