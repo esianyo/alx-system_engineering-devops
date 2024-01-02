@@ -5,12 +5,9 @@ from sys import argv
 
 def fetch_employee_data(employee_id):
     # Fetch user data
-    user_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(employee_id)
-    user_response = requests.get(user_url)
-
+    user_response = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(employee_id))
     # Fetch TODOs for the given employee
-    todos_url = 'https://jsonplaceholder.typicode.com/todos?userId={}'.format(employee_id)
-    todos_response = requests.get(todos_url)
+    todos_response = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'.format(employee_id))
 
     # Check if user and TODOs are found
     if user_response.status_code != 200:
