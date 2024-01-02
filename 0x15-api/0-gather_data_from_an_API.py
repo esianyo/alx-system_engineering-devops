@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+
+'''
+Script that displays an employee completed TODO tasks
+'''
 import requests
 import sys
 
